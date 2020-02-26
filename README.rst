@@ -23,29 +23,23 @@
 Quickstart
 ----------
 
-First, run ``PostgreSQL``, set environment variables and create database. For example using ``docker``: ::
-
-    export POSTGRES_DB=rwdb POSTGRES_PORT=5432 POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres
-    docker run --name pgdb --rm -e POSTGRES_USER="$POSTGRES_USER" -e POSTGRES_PASSWORD="$POSTGRES_PASSWORD" -e POSTGRES_DB="$POSTGRES_DB" postgres
-    export POSTGRES_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' pgdb)
-    createdb --host=$POSTGRES_HOST --port=$POSTGRES_PORT --username=$POSTGRES_USER $POSTGRES_DB
-
 Then run the following commands to bootstrap your environment with ``poetry``: ::
 
-    git clone https://github.com/nsidnev/fastapi-realworld-example-app
-    cd fastapi-realworld-example-app
+    git clone https://github.com/xiaozl/fastapi-realworld-example-app-mysql.git
+    cd fastapi-realworld-example-app-mysql
     poetry install
     poetry shell
 
 Then create ``.env`` file (or rename and modify ``.env.example``) in project root and set environment variables for application: ::
-
-    touch .env
-    echo DB_CONNECTION=postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB >> .env
-    echo SECRET_KEY=$(openssl rand -hex 32) >> .env
+	HOST=mysql host
+	PORT=mysql port 3306
+	USER=mysql user root
+	PWD=mysql pwd root
+	DB=mysql db fastapi
+  
 
 To run the web application in debug use::
-
-    alembic upgrade head
+init mysql db::
     uvicorn app.main:app --reload
 
 
