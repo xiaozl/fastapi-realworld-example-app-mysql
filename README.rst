@@ -31,15 +31,15 @@ Then run the following commands to bootstrap your environment with ``poetry``: :
     poetry shell
 
 Then create ``.env`` file (or rename and modify ``.env.example``) in project root and set environment variables for application: ::
-	HOST=mysql host
-	PORT=mysql port 3306
-	USER=mysql user root
-	PWD=mysql pwd root
-	DB=mysql db fastapi
-  
+    
+    HOST=mysql host  127.0.0.1 
+    PORT=mysql port 3306 
+    USER=mysql user root
+    PWD=mysql pwd root
+    DB=mysql db fastapi
 
-To run the web application in debug use::
-init mysql db::
+To run the web application in debug use init mysql db: ::
+
     uvicorn app.main:app --reload
 
 
